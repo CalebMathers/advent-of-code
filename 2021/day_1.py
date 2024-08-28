@@ -19,6 +19,22 @@ def count_increases(data: list[str]) -> int:
     return count
 
 
+def create_windows(data: list[str]) -> list[str]:
+    """Creates measurement windows"""
+    windows = []
+    for i, num in enumerate(data):
+        if not i >= (len(data) - 2):
+            current_sum = int(num.strip())
+            current_sum += int(data[i+1].strip())
+            current_sum += int(data[i+2].strip())
+            windows.append(str(current_sum))
+
+    return windows
+
+
 if __name__ == "__main__":
-    data = read_input("day_1_data.txt")
-    print(f"There are {count_increases(data)} increases")
+    num_list = read_input("day_1_data.txt")
+    print(f"There are {count_increases(num_list)} increases")
+    windowed_data = create_windows(num_list)
+    print(f"There are {count_increases(windowed_data)}" +
+          " increases when working with three measurement windows")
