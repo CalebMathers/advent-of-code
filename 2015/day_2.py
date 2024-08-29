@@ -67,4 +67,4 @@ if __name__ == "__main__":
     total_ribbon = calculate_total_ribbon(data)
 
     print(f"The total paper needed is: {total_paper}")
-    print(f"The total ribbon needed is {total_ribbon}")
+    print(f"The total ribbon needed is: {total_ribbon}")
