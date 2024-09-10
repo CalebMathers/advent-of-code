@@ -1,4 +1,4 @@
-"""Advent of code 2015 day 2"""
+"""Day 2 for for advent of code 2015"""
 
 
 def read_input(filename: str) -> list[str]:
@@ -62,7 +62,7 @@ def calculate_total_ribbon(all_gift_dimensions: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    data = read_input("day_2_data.txt")
+    data = read_input("./data/day_2_data.txt")
     total_paper = calculate_total_paper(data)
     total_ribbon = calculate_total_ribbon(data)
 

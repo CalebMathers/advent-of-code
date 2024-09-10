@@ -1,4 +1,4 @@
-"""Day for for advent of code 2015"""
+"""Day 1 for for advent of code 2015"""
 
 
 def read_input(filename: str) -> list[str]:
@@ -22,6 +22,6 @@ def get_basement_index(movements: str) -> int:
 
 
 if __name__ == "__main__":
-    floor_movements = read_input("day_1_data.txt")
+    floor_movements = read_input("./data/day_1_data.txt")
     print(get_final_destination(floor_movements))
     print(get_basement_index(floor_movements))
