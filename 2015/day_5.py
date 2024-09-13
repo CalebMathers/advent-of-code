@@ -7,5 +7,14 @@ def read_input(filename: str) -> list[str]:
         return [line.strip() for line in f.readlines()]
 
 
+def check_nice_string(string_to_check: str) -> bool:
+    """Returns true if the string is 'nice', else returns false."""
+
+
+def find_nice_strings(all_strings: list[str]) -> list[str]:
+    """Returns every string that is deemed nice as per
+    Santa's odd standards."""
+
+
 if __name__ == "__main__":
     print(read_input("./data/day_5_data.txt"))
