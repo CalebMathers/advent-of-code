@@ -1,4 +1,4 @@
-"""Day 3 for for advent of code 2015"""
+"""Day 4 for for advent of code 2015"""
 
 import hashlib
 
