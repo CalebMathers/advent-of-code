@@ -33,9 +33,25 @@ def move_and_deliver(movements: str) -> dict:
         else:
             delivered[f"{x_loc}:{y_loc}"] = 1
 
-    return len(delivered.keys())
+    return delivered
+
+
+def dual_move_and_deliver(movements: str) -> int:
+    """Returns the number of unique houses that have been delivered
+    to after santa and robo-santa have finished their movements."""
+    santa_movements = movements[::2]
+    robo_movements = movements[1::2]
+
+    santa_delivery_coords = list(move_and_deliver(santa_movements).keys())
+    robo_delivery_coords = list(move_and_deliver(robo_movements).keys())
+
+    all_delivered_coords = set(santa_delivery_coords + robo_delivery_coords)
+    return len(all_delivered_coords)
 
 
 if __name__ == "__main__":
     data = read_input("./data/day_3_data.txt")
-    print(move_and_deliver(data))
+    part_one_deliveries = move_and_deliver(data)
+    print(len(part_one_deliveries.keys()))
+
+    print(dual_move_and_deliver(data))
