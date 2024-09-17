@@ -23,7 +23,7 @@ def check_nice_string(string_to_check: str) -> bool:
             if char == string_to_check[i + 1]:
                 double_count += 1
 
-            if (char + string_to_check[i + 1]) in FORBIDDEN_STRINGS:
+            if char + string_to_check[i + 1] in FORBIDDEN_STRINGS:
                 return False
 
     if vowel_count >= 3 and double_count >= 1:
