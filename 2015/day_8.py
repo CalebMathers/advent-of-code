@@ -29,13 +29,14 @@ def count_string(string: str) -> tuple[int, int]:
     evaluated_string = string.encode().decode("unicode-escape")[1:-1]
     memory_count = len(evaluated_string)
 
-    test = len(fr'"{string.replace('"', 'bb')}"') + 2
+    test = fr'"{string}"'
+
+    print(f"First: {evaluated_string}\nSecond: {string}\nThird: {test}")
 
     return (code_count, memory_count, test)
 
 
 if __name__ == "__main__":
-    # data = read_input("./data/day_8_test_data.txt")
-    # code_total, memory_total = (count_all_strings(data))
-    # print(f"Answer to part one: {code_total - memory_total}")
-    print(count_string('"\x27"'))
+    data = read_input("./data/day_8_test_data.txt")
+    code_total, memory_total = (count_all_strings(data))
+    print(f"Answer to part one: {code_total - memory_total}")
