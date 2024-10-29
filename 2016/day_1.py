@@ -57,8 +57,38 @@ def move_all(movements: list[str]) -> tuple:
     return current_x, current_y
 
 
+def find_repeat_location(movements: list[str]) -> tuple:
+    """Returns the x and y coordinates of the first location that is visited twice
+    while following the movements given."""
+    current_direction = "N"
+    current_x = 0
+    current_y = 0
+    visited_locations = []
+    visited_locations.append((current_x, current_y))
+
+    for movement in movements:
+        turn_direction = movement[0]
+        current_direction = change_direction(current_direction, turn_direction)
+
+        moving_distance = int(movement[1:])
+
+        for _ in range(1, moving_distance+1):
+            current_x, current_y = move_once(current_direction, 1, (current_x, current_y))
+
+            if (current_x, current_y) in visited_locations:
+                return (current_x, current_y)
+            visited_locations.append((current_x, current_y))
+
+    return current_x, current_y
+
+
 if __name__ == "__main__":
     movements_data = read_input("data/day_1_data.txt")
-    final_x, final_y = move_all(movements_data)
 
-    print(abs(final_x) + abs(final_y))
+    final_x, final_y = move_all(movements_data)
+    blocks_away = abs(final_x) + abs(final_y)
+    print(f"Part 1: Easter Bunny HQ is {blocks_away} blocks away.")
+
+    repeat_x, repeat_y = find_repeat_location(movements_data)
+    repeated_blocks_away = abs(repeat_x) + abs(repeat_y)
+    print(f"Part 2: The first revisited location is {repeated_blocks_away} blocks away.")
