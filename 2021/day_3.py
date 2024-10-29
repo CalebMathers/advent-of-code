@@ -38,7 +38,28 @@ def calculate_power_consumption(gamma: int, epsilon: int) -> int:
     return gamma * epsilon
 
 
+def calculate_oxygen_gen_ratings(bit_strings: list[str]) -> int:
+    """Returns the oxygen gen ratings from a list of bit strings."""
+    oxygen_rating = ""
+    possible_strings = []
+    most_pop_positions = []
+
+    for i in range(len(bit_strings[0])):
+        one_count = 0
+        zero_count = 0
+        for bit_string in bit_strings:
+            if bit_string[i] == "1":
+                one_count += 1
+            else:
+                zero_count += 1
+
+        if one_count >= zero_count:
+            most_pop_positions.append((i, 1))
+        else:
+            most_pop_positions.append((i, 0))
+
+
 if __name__ == "__main__":
     data = read_input("day_3_data.txt")
-    gamma_rate, epsilon_rate = count_bits(data)
-    print(calculate_power_consumption(gamma_rate, epsilon_rate))
+    print(f"Part one answer: {calculate_power_consumption(*count_bits(data))}")
+    print(calculate_oxygen_gen_ratings(data))
