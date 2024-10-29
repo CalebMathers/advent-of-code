@@ -1,14 +1,16 @@
 """Day 1 of the advent of code 2016."""
 
+
 def read_input(filename: str) -> list[str]:
     """Reads the data from the file given"""
     with open(filename, "r", encoding="utf-8") as f:
         return [movement.strip() for movement in f.read().split(",")]
-    
+
+
 def move_once(direction: str, distance: int, current_loc: tuple) -> tuple:
-    """"""
+    """Makes a movement based on the given inputs and returns the new location."""
     current_x, current_y = current_loc
-    
+
     if direction == "N":
         current_y += distance
     elif direction == "E":
@@ -20,35 +22,26 @@ def move_once(direction: str, distance: int, current_loc: tuple) -> tuple:
 
     return current_x, current_y
 
-def change_direction(current_direction: str, turn_direction: str) -> str:
-    """"""
-    if current_direction == "N":
-        if turn_direction == "R":
-            return "E"
-        else:
-            return "W"
-        
-    if current_direction == "E":
-        if turn_direction == "R":
-            return "S"
-        else:
-            return "N"
-        
-    if current_direction == "S":
-        if turn_direction == "R":
-            return "W"
-        else:
-            return "E"
-        
-    if current_direction == "W":
-        if turn_direction == "R":
-            return "N"
-        else:
-            return "S"
 
+def change_direction(current_direction: str, turn_direction: str) -> str:
+    """Changes the direction the elf is facing."""
+    if current_direction == "N":
+        return "E" if turn_direction == "R" else "W"
+
+    if current_direction == "E":
+        return "S" if turn_direction == "R" else "N"
+
+    if current_direction == "S":
+        return "W" if turn_direction == "R" else "E"
+
+    if current_direction == "W":
+        return "N" if turn_direction == "R" else "S"
+
+    return current_direction
 
 def move_all(movements: list[str]) -> tuple:
-    """"""
+    """Initializes location then moves as per the given list of movements
+    and returns the final x and y coords as a tuple."""
     current_direction = "N"
     current_x = 0
     current_y = 0
@@ -64,11 +57,8 @@ def move_all(movements: list[str]) -> tuple:
     return current_x, current_y
 
 
-
-
-
 if __name__ == "__main__":
-    movements = read_input("data/day_1_data.txt")
-    final_x, final_y = move_all(movements)
-    
+    movements_data = read_input("data/day_1_data.txt")
+    final_x, final_y = move_all(movements_data)
+
     print(abs(final_x) + abs(final_y))
