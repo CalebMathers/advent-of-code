@@ -122,8 +122,6 @@ def new_find_code(instructions: list[str]) -> str:
 if __name__ == "__main__":
     movements_data = read_input("data/day_2_data.txt")
 
-    part_one_code = find_code(movements_data)
-    print(f"The code for the first keypad is {part_one_code}")
+    print(f"The code for the first keypad is {find_code(movements_data)}")
 
-    part_two_code = new_find_code(movements_data)
-    print(f"The code for the first keypad is {part_two_code}")
+    print(f"The code for the first keypad is {new_find_code(movements_data)}")
