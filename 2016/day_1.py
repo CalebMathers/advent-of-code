@@ -39,6 +39,7 @@ def change_direction(current_direction: str, turn_direction: str) -> str:
 
     return current_direction
 
+
 def move_all(movements: list[str]) -> tuple:
     """Initializes location then moves as per the given list of movements
     and returns the final x and y coords as a tuple."""
@@ -52,7 +53,8 @@ def move_all(movements: list[str]) -> tuple:
 
         moving_distance = int(movement[1:])
 
-        current_x, current_y = move_once(current_direction, moving_distance, (current_x, current_y))
+        current_x, current_y = move_once(
+            current_direction, moving_distance, (current_x, current_y))
 
     return current_x, current_y
 
@@ -73,7 +75,8 @@ def find_repeat_location(movements: list[str]) -> tuple:
         moving_distance = int(movement[1:])
 
         for _ in range(1, moving_distance+1):
-            current_x, current_y = move_once(current_direction, 1, (current_x, current_y))
+            current_x, current_y = move_once(
+                current_direction, 1, (current_x, current_y))
 
             if (current_x, current_y) in visited_locations:
                 return (current_x, current_y)
@@ -91,4 +94,5 @@ if __name__ == "__main__":
 
     repeat_x, repeat_y = find_repeat_location(movements_data)
     repeated_blocks_away = abs(repeat_x) + abs(repeat_y)
-    print(f"Part 2: The first revisited location is {repeated_blocks_away} blocks away.")
+    print(f"""Part 2: The first revisited location is {
+          repeated_blocks_away} blocks away.""")
