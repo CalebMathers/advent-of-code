@@ -45,13 +45,13 @@ def get_right_counts(right_locations: list[int]) -> dict:
 def calculate_similarity_score(left_locations: list[int], right_counts: dict) -> int:
     """Returns the similarity score calculated by multiplying each num in the left list
     by the number of times it appears in the right list."""
-    similarity_score = 0
+    total_similarity_score = 0
 
     for num in left_locations:
         if num in right_counts:
-            similarity_score += num * right_counts[num]
+            total_similarity_score += num * right_counts[num]
 
-    return similarity_score
+    return total_similarity_score
 
 
 if __name__ == "__main__":
