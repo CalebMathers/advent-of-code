@@ -33,9 +33,35 @@ def calculate_total_difference(left_locations: list[int], right_locations: list[
     return total_difference
 
 
+def get_right_counts(right_locations: list[int]) -> dict:
+    """Returns a dictionary of each number from the right list and the number of
+    times it appears."""
+    right_list_counts = {num: right_locations.count(
+        num) for num in right_locations}
+
+    return right_list_counts
+
+
+def calculate_similarity_score(left_locations: list[int], right_counts: dict) -> int:
+    """Returns the similarity score calculated by multiplying each num in the left list
+    by the number of times it appears in the right list."""
+    similarity_score = 0
+
+    for num in left_locations:
+        if num in right_counts:
+            similarity_score += num * right_counts[num]
+
+    return similarity_score
+
+
 if __name__ == "__main__":
     location_data = read_input("data/day_1_data.txt")
     left_data, right_data = separate_lists(location_data)
     total_distance = calculate_total_difference(left_data, right_data)
 
     print(f"The total distance for part one is: {total_distance}")
+
+    right_counts_dict = get_right_counts(right_data)
+    similarity_score = calculate_similarity_score(left_data, right_counts_dict)
+
+    print(f"The similarity score for part two is: {similarity_score}")
