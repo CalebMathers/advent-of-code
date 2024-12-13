@@ -18,6 +18,11 @@ def determine_line_safety(levels: list[int]) -> bool:
     pass
 
 
+def find_total_safe(reports: list[list[int]]) -> int:
+    """Returns the total number of safe reports."""
+    pass
+
+
 if __name__ == "__main__":
     reports_input = (read_input("data/day_2_data.txt"))
     converted_reports = convert_list(reports_input)
