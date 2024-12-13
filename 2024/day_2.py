@@ -40,8 +40,29 @@ def find_total_safe(reports: list[list[int]]) -> int:
     return safe_count
 
 
+def find_total_safe_with_dampener(reports: list[list[int]]) -> int:
+    """Returns the total number of safe reports with the use of the
+    part two problem dampener."""
+    safe_count = 0
+
+    for report in reports:
+        for i in range(len(report)):
+            levels_removed = report.copy()
+            levels_removed.pop(i)
+
+            if determine_report_safety(levels_removed):
+                safe_count += 1
+                break
+
+    return safe_count
+
+
 if __name__ == "__main__":
     reports_input = read_input("data/day_2_data.txt")
     converted_reports = convert_list(reports_input)
 
-    print(find_total_safe(converted_reports))
+    print(f"""Without the dampener (part one), there are: {
+          find_total_safe(converted_reports)} safe levels.""")
+
+    print(f"""With the dampener (part two), there are: {
+          find_total_safe_with_dampener(converted_reports)} safe levels.""")
