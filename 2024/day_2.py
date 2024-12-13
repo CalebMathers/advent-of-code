@@ -7,5 +7,19 @@ def read_input(filename: str) -> list[str]:
         return [line.strip() for line in f.readlines()]
 
 
-if __name__ == "__main__":
+def convert_list(reports: list[str]) -> list[list[int]]:
+    """Converts the given list of reports to a list
+    of lists of ints."""
+    return [[int(num) for num in level.split(" ")] for level in reports]
+
+
+def determine_line_safety(levels: list[int]) -> bool:
+    """Returns true if the line is safe, else false."""
     pass
+
+
+if __name__ == "__main__":
+    reports_input = (read_input("data/day_2_data.txt"))
+    converted_reports = convert_list(reports_input)
+
+    print(converted_reports)
