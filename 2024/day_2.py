@@ -41,7 +41,7 @@ def find_total_safe(reports: list[list[int]]) -> int:
 
 
 if __name__ == "__main__":
-    reports_input = (read_input("data/day_2_data.txt"))
+    reports_input = read_input("data/day_2_data.txt")
     converted_reports = convert_list(reports_input)
 
     print(find_total_safe(converted_reports))
