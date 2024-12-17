@@ -9,6 +9,17 @@ def read_input(filename: str) -> list[str]:
         return f.read()
 
 
+def find_uncorrupted_instructions(corrupted_data: str) -> list[str]:
+    """Returns a list of all the uncorrupted multiplication instructions
+    from a string containing corrupted data."""
+    uncorrupted_pattern = r'mul\(\d{1,3},\d{1,3}\)'
+
+    multiply_calls = re.findall(uncorrupted_pattern, corrupted_data)
+
+    return multiply_calls
+
+
 if __name__ == "__main__":
     raw_data = read_input("data/day_3_data.txt")
-    print(raw_data)
+
+    print(find_uncorrupted_instructions(raw_data))
