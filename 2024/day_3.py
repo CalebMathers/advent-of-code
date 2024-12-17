@@ -4,7 +4,7 @@ import re
 
 
 def read_input(filename: str) -> list[str]:
-    """Reads the data from the file given"""
+    """Reads the data from the file given."""
     with open(filename, "r", encoding="utf-8") as f:
         return f.read()
 
