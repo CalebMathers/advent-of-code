@@ -1,3 +1,5 @@
+# pylint: disable=C0200
+
 """Day 4 of advent of code 2024."""
 
 
